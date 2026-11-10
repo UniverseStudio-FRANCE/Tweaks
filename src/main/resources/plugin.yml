@@ -1,0 +1,25 @@
+name: Tweaks
+version: ${version}
+author: Phil
+description: Tweaks plugin
+website: https://github.com/UniverseStudio-FRANCE
+
+main: net.universestudio.Tweaks
+
+api-version: '26.1'
+
+commands:
+  fly:
+    description: Toggles creative fly
+    permission: tweaks.fly
+    usage: /fly
+
+  flyspeed:
+    description: Sets the fly speed from x1 to x10
+    permission: tweaks.flyspeed
+    usage: /flyspeed <number>
+
+  rename:
+    description: Renames the handled item (MiniMessage format)
+    permission: tweaks.rename
+    usage: /rename <name>
