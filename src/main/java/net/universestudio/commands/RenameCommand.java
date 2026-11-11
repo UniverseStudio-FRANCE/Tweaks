@@ -7,6 +7,7 @@ import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
 import net.kyori.adventure.text.Component;
+import net.universestudio.api.IPluginCommand;
 import net.universestudio.utils.TextHelper;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
@@ -15,7 +16,7 @@ import org.bukkit.inventory.ItemStack;
 import org.bukkit.inventory.PlayerInventory;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public class RenameCommand {
+public class RenameCommand implements IPluginCommand {
     private static final LiteralCommandNode<CommandSourceStack> renameCommand = Commands.literal("rename")
         .requires(context ->
             context.getSender().isOp() ||
@@ -53,7 +54,8 @@ public class RenameCommand {
         )
         .build();
 
-    public static void registerRenameCommand(JavaPlugin plugin) {
+    @Override
+    public void register(JavaPlugin plugin) {
         plugin.getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, event -> {
             event.registrar().register(renameCommand);
         });

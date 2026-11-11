@@ -6,12 +6,13 @@ import com.mojang.brigadier.tree.LiteralCommandNode;
 import io.papermc.paper.command.brigadier.CommandSourceStack;
 import io.papermc.paper.command.brigadier.Commands;
 import io.papermc.paper.plugin.lifecycle.event.types.LifecycleEvents;
+import net.universestudio.api.IPluginCommand;
 import net.universestudio.utils.TextHelper;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
-public final class FlyCommand {
+public final class FlyCommand implements IPluginCommand {
     private static final LiteralCommandNode<CommandSourceStack> flyCommand = Commands.literal("fly")
         .requires(context ->
             context.getSender().isOp() ||
@@ -51,7 +52,8 @@ public final class FlyCommand {
         )
         .build();
 
-    public static void registerFlyCommand(JavaPlugin plugin) {
+    @Override
+    public void register(JavaPlugin plugin) {
         plugin.getLifecycleManager().registerEventHandler(LifecycleEvents.COMMANDS, event -> {
             event.registrar().register(flyCommand);
             event.registrar().register(flySpeedCommand);

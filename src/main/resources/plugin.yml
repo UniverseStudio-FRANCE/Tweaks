@@ -23,3 +23,13 @@ commands:
     description: Renames the handled item (MiniMessage format)
     permission: tweaks.rename
     usage: /rename <name>
+
+  lock:
+    description: Locks the held item
+    permission: tweaks.lock
+    usage: /lock
+
+  unlock:
+    description: Unlocks the held item
+    permission: tweaks.unlock
+    usage: /unlock
